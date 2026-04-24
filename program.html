@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Program Studi - ITBM POLMAN</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+  body { font-family: 'Poppins', sans-serif; }
+</style>
+</head>
+
+<body class="bg-gray-50">
+
+<!-- Navbar -->
+<nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 py-4">
+    <div class="flex justify-between items-center">
+      <div class="flex items-center">
+        <i class="fas fa-university text-2xl text-red-800 mr-2"></i>
+        <span class="text-xl font-bold text-red-800">ITBM POLMAN</span>
+      </div>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="text-gray-700 hover:text-red-800 font-medium transition">Home</a>
+        <a href="tentang.html" class="text-gray-700 hover:text-red-800 font-medium transition">Tentang</a>
+        <a href="program.html" class="text-red-800 font-medium transition">Program Studi</a>
+        <a href="pendaftaran.html" class="text-gray-700 hover:text-red-800 font-medium transition">Pendaftaran</a>
+        <a href="berita.html" class="text-gray-700 hover:text-red-800 font-medium transition">Berita</a>
+        <a href="index.html#kontak" class="px-5 py-2 bg-red-800 text-white rounded-full hover:bg-red-900 transition">Kontak</a>
+      </div>
+      <button class="md:hidden text-gray-700" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+  </div>
+  <div class="hidden md:hidden bg-white border-t" id="mobile-menu">
+    <a href="index.html" class="block px-4 py-3 text-gray-700">Home</a>
+    <a href="tentang.html" class="block px-4 py-3 text-gray-700">Tentang</a>
+    <a href="program.html" class="block px-4 py-3 text-gray-700">Program Studi</a>
+    <a href="pendaftaran.html" class="block px-4 py-3 text-gray-700">Pendaftaran</a>
+    <a href="berita.html" class="block px-4 py-3 text-gray-700">Berita</a>
+  </div>
+</nav>
+
+<!-- Header -->
+<div class="pt-28 pb-12 bg-red-800">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Program Studi</h1>
+    <p class="text-gray-200">Pilih jalur karirmu di ITBM POLMAN</p>
+  </div>
+</div>
+
+<!-- Program Studi -->
+<div class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Teknik Informatika -->
+      <div class="bg-gradient-to-br from-red-800 to-red-900 p-8 rounded-2xl shadow-lg text-white">
+        <i class="fas fa-laptop-code text-5xl text-yellow-500 mb-6"></i>
+        <h3 class="text-2xl font-bold mb-4">Teknik Informatika</h3>
+        <p class="text-gray-200 mb-6">Belajar pemrograman, web development, mobile app, dan AI.</p>
+        <ul class="space-y-2 text-sm">
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>4 Tahun</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>S1 Sarjana</li>
+        </ul>
+      </div>
+
+      <!-- Manajemen Bisnis -->
+      <div class="bg-gradient-to-br from-red-800 to-red-900 p-8 rounded-2xl shadow-lg text-white">
+        <i class="fas fa-chart-line text-5xl text-yellow-500 mb-6"></i>
+        <h3 class="text-2xl font-bold mb-4">Manajemen Bisnis</h3>
+        <p class="text-gray-200 mb-6">Strategi bisnis, entrepreneurship, dan manajemen perusahaan.</p>
+        <ul class="space-y-2 text-sm">
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>4 Tahun</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>S1 Sarjana</li>
+        </ul>
+      </div>
+
+      <!-- Akuntansi -->
+      <div class="bg-gradient-to-br from-red-800 to-red-900 p-8 rounded-2xl shadow-lg text-white">
+        <i class="fas fa-calculator text-5xl text-yellow-500 mb-6"></i>
+        <h3 class="text-2xl font-bold mb-4">Akuntansi</h3>
+        <p class="text-gray-200 mb-6">Perpajakan, auditing, dan laporan keuangan.</p>
+        <ul class="space-y-2 text-sm">
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>4 Tahun</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>S1 Sarjana</li>
+        </ul>
+      </div>
+
+      <!-- Teknik Elektro -->
+      <div class="bg-gradient-to-br from-red-800 to-red-900 p-8 rounded-2xl shadow-lg text-white">
+        <i class="fas fa-microchip text-5xl text-yellow-500 mb-6"></i>
+        <h3 class="text-2xl font-bold mb-4">Teknik Elektro</h3>
+        <p class="text-gray-200 mb-6">Elektronika, kelistrikan, dan sistem kontrol industri.</p>
+        <ul class="space-y-2 text-sm">
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>4 Tahun</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>S1 Sarjana</li>
+        </ul>
+      </div>
+
+      <!-- Desain Komunikasi Visual -->
+      <div class="bg-gradient-to-br from-red-800 to-red-900 p-8 rounded-2xl shadow-lg text-white">
+        <i class="fas fa-palette text-5xl text-yellow-500 mb-6"></i>
+        <h3 class="text-2xl font-bold mb-4">Desain Komunikasi Visual</h3>
+        <p class="text-gray-200 mb-6">Desain grafis, UI/UX, dan produksi media.</p>
+        <ul class="space-y-2 text-sm">
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>4 Tahun</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>S1 Sarjana</li>
+        </ul>
+      </div>
+
+      <!-- Komunikasi Massa -->
+      <div class="bg-gradient-to-br from-red-800 to-red-900 p-8 rounded-2xl shadow-lg text-white">
+        <i class="fas fa-broadcast-tower text-5xl text-yellow-500 mb-6"></i>
+        <h3 class="text-2xl font-bold mb-4">Komunikasi Massa</h3>
+        <p class="text-gray-200 mb-6">Jurnalistik, public relations, dan media.</p>
+        <ul class="space-y-2 text-sm">
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>4 Tahun</li>
+          <li><i class="fas fa-check text-yellow-500 mr-2"></i>S1 Sarjana</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Jalur Karir -->
+<div class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-red-800 mb-12">Jalur Karir Lulusan</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="bg-white p-6 rounded-xl shadow-md text-center">
+        <i class="fas fa-code text-3xl text-red-800 mb-4"></i>
+        <p class="font-semibold">Software Engineer</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md text-center">
+        <i class="fas fa-project-diagram text-3xl text-red-800 mb-4"></i>
+        <p class="font-semibold">Project Manager</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md text-center">
+        <i class="fas fa-briefcase text-3xl text-red-800 mb-4"></i>
+        <p class="font-semibold">Entrepreneur</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md text-center">
+        <i class="fas fa-chart-pie text-3xl text-red-800 mb-4"></i>
+        <p class="font-semibold">Financial Analyst</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="py-20 bg-red-800">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold text-white mb-4">Tertarik dengan program kami?</h2>
+    <p class="text-gray-200 mb-8">Daftar sekarang dan wujudkan karir gemilang</p>
+    <a href="pendaftaran.html" class="inline-block px-8 py-3 bg-yellow-500 text-red-900 font-bold rounded-full hover:bg-yellow-400 transition">Daftar Sekarang</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-8">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <p class="text-gray-400">© 2026 ITBM POLMAN. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

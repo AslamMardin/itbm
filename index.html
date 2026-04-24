@@ -6,6 +6,8 @@
 <title>ITBM POLMAN</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
   body { font-family: 'Poppins', sans-serif; }
@@ -27,10 +29,11 @@
         <span class="text-xl font-bold text-red-800">ITBM POLMAN</span>
       </div>
       <div class="hidden md:flex items-center space-x-8">
-        <a href="#" class="text-gray-700 hover:text-red-800 font-medium transition">Home</a>
-        <a href="#tentang" class="text-gray-700 hover:text-red-800 font-medium transition">Tentang</a>
-        <a href="#keunggulan" class="text-gray-700 hover:text-red-800 font-medium transition">Keunggulan</a>
-        <a href="#galeri" class="text-gray-700 hover:text-red-800 font-medium transition">Galeri</a>
+        <a href="index.html" class="text-gray-700 hover:text-red-800 font-medium transition">Home</a>
+        <a href="tentang.html" class="text-gray-700 hover:text-red-800 font-medium transition">Tentang</a>
+        <a href="program.html" class="text-gray-700 hover:text-red-800 font-medium transition">Program Studi</a>
+        <a href="pendaftaran.html" class="text-gray-700 hover:text-red-800 font-medium transition">Pendaftaran</a>
+        <a href="berita.html" class="text-gray-700 hover:text-red-800 font-medium transition">Berita</a>
         <a href="#kontak" class="px-5 py-2 bg-red-800 text-white rounded-full hover:bg-red-900 transition">Kontak</a>
       </div>
       <button class="md:hidden text-gray-700" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
@@ -40,10 +43,11 @@
   </div>
   <!-- Mobile Menu -->
   <div class="hidden md:hidden bg-white border-t" id="mobile-menu">
-    <a href="#" class="block px-4 py-3 text-gray-700 hover:bg-red-50">Home</a>
-    <a href="#tentang" class="block px-4 py-3 text-gray-700 hover:bg-red-50">Tentang</a>
-    <a href="#keunggulan" class="block px-4 py-3 text-gray-700 hover:bg-red-50">Keunggulan</a>
-    <a href="#galeri" class="block px-4 py-3 text-gray-700 hover:bg-red-50">Galeri</a>
+    <a href="index.html" class="block px-4 py-3 text-gray-700 hover:bg-red-50">Home</a>
+    <a href="tentang.html" class="block px-4 py-3 text-gray-700 hover:bg-red-50">Tentang</a>
+    <a href="program.html" class="block px-4 py-3 text-gray-700 hover:bg-red-50">Program Studi</a>
+    <a href="pendaftaran.html" class="block px-4 py-3 text-gray-700 hover:bg-red-50">Pendaftaran</a>
+    <a href="berita.html" class="block px-4 py-3 text-gray-700 hover:bg-red-50">Berita</a>
     <a href="#kontak" class="block px-4 py-3 text-gray-700 hover:bg-red-50">Kontak</a>
   </div>
 </nav>
@@ -168,6 +172,18 @@
   </div>
 </div>
 
+<!-- Lokasi Kampus -->
+<div class="section py-20 bg-gray-50" id="lokasi">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center text-red-800 mb-4">Lokasi Kampus</h2>
+    <div class="w-24 h-1 bg-yellow-500 mx-auto mb-12"></div>
+    <div class="bg-white p-4 rounded-2xl shadow-lg">
+      <div id="map" class="w-full h-96 rounded-xl"></div>
+    </div>
+    <p class="text-center text-gray-600 mt-4">Jl. Pendidikan No. 123, Kota Baru</p>
+  </div>
+</div>
+
 <!-- Testimoni -->
 <div class="section py-20 bg-red-800" id="testimoni">
   <div class="max-w-7xl mx-auto px-4">
@@ -175,8 +191,8 @@
     <div class="w-24 h-1 bg-yellow-500 mx-auto mb-12"></div>
     <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl max-w-2xl mx-auto border border-white/20">
       <i class="fas fa-quote-left text-4xl text-yellow-500 mb-4"></i>
-      <p class="text-xl text-white text-center mb-6">"Kampus ini sangat membantu saya berkembang dan siap memasuki dunia kerja!"</p>
-      <p class="text-yellow-500 font-bold text-center">- Andi Mahasiswa ITBM POLMAN</p>
+      <p class="text-xl text-white text-center mb-6">"marasa sannali kampus itbm cok!"</p>
+      <p class="text-yellow-500 font-bold text-center">- Mahasiwa ITBM POLMAN</p>
     </div>
   </div>
 </div>
@@ -212,7 +228,7 @@
           </div>
           <div>
             <p class="text-sm text-gray-500">Alamat</p>
-            <p class="font-semibold text-gray-800">Jl. Pendidikan No. 123</p>
+            <p class="font-semibold text-gray-800">Jl. Merpati Desa Bonde</p>
           </div>
         </div>
       </div>
@@ -246,7 +262,7 @@
         <i class="fab fa-youtube"></i>
       </a>
     </div>
-    <p class="text-gray-300">© 2026 ITBM POLMAN. All rights reserved.</p>
+    <p class="text-gray-300">© 2026 ITBM POLMAN</p>
   </div>
 </footer>
 
@@ -287,6 +303,15 @@ function goToSlide(index) {
 }
 
 setInterval(nextSlide, 5000);
+
+// Initialize Leaflet Map
+var map = L.map('map').setView([-3.400740075100623, 119.23146270423709], 13);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+L.marker([-3.400740075100623, 119.23146270423709]).addTo(map)
+  .bindPopup('<b>ITBM POLMAN</b><br>Jl. Pendidikan No. 123')
+  .openPopup();
 
 // Navbar scroll effect
 window.addEventListener('scroll', () => {

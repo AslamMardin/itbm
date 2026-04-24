@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tentang - ITBM POLMAN</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+  body { font-family: 'Poppins', sans-serif; }
+</style>
+</head>
+
+<body class="bg-gray-50">
+
+<!-- Navbar -->
+<nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 py-4">
+    <div class="flex justify-between items-center">
+      <div class="flex items-center">
+        <i class="fas fa-university text-2xl text-red-800 mr-2"></i>
+        <span class="text-xl font-bold text-red-800">ITBM POLMAN</span>
+      </div>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="text-gray-700 hover:text-red-800 font-medium transition">Home</a>
+        <a href="tentang.html" class="text-red-800 font-medium transition">Tentang</a>
+        <a href="program.html" class="text-gray-700 hover:text-red-800 font-medium transition">Program Studi</a>
+        <a href="pendaftaran.html" class="text-gray-700 hover:text-red-800 font-medium transition">Pendaftaran</a>
+        <a href="berita.html" class="text-gray-700 hover:text-red-800 font-medium transition">Berita</a>
+        <a href="index.html#kontak" class="px-5 py-2 bg-red-800 text-white rounded-full hover:bg-red-900 transition">Kontak</a>
+      </div>
+      <button class="md:hidden text-gray-700" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+  </div>
+  <div class="hidden md:hidden bg-white border-t" id="mobile-menu">
+    <a href="index.html" class="block px-4 py-3 text-gray-700">Home</a>
+    <a href="tentang.html" class="block px-4 py-3 text-gray-700">Tentang</a>
+    <a href="program.html" class="block px-4 py-3 text-gray-700">Program Studi</a>
+    <a href="pendaftaran.html" class="block px-4 py-3 text-gray-700">Pendaftaran</a>
+    <a href="berita.html" class="block px-4 py-3 text-gray-700">Berita</a>
+  </div>
+</nav>
+
+<!-- Header -->
+<div class="pt-28 pb-12 bg-red-800">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Tentang Kami</h1>
+    <p class="text-gray-200">Mengenal lebih dekat ITBM POLMAN</p>
+  </div>
+</div>
+
+<!-- Sejarah -->
+<div class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl font-bold text-red-800 mb-6">Sejarah Kampus</h2>
+        <p class="text-gray-600 mb-4">ITBM POLMAN didirikan dengan visi untuk menjadi institusi pendidikan terbaik di bidang teknologi dan bisnis. Sejak berdiri, kami telah menghasilkan ribuan lulusan yang siap bersaing di dunia kerja.</p>
+        <p class="text-gray-600">Dengan fasilitas modern dan pengajar profesional, kami terus berkomitmen untuk memberikan pendidikan berkualitas yang relevan dengan kebutuhan industri.</p>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <img src="kampus.jpeg" class="rounded-xl shadow-lg">
+        <img src="kampus 2.jpeg" class="rounded-xl shadow-lg mt-8">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Visi Misi -->
+<div class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-red-800 mb-12">Visi & Misi</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="bg-white p-8 rounded-2xl shadow-lg">
+        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <i class="fas fa-eye text-3xl text-red-800"></i>
+        </div>
+        <h3 class="text-xl font-bold text-center text-gray-800 mb-4">Visi</h3>
+        <p class="text-gray-600 text-center">Menjadi institusi pendidikan tinggi yang menghasilkan sumber daya manusia profesional, kompeten, dan berakhlak mulia.</p>
+      </div>
+      <div class="bg-white p-8 rounded-2xl shadow-lg">
+        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <i class="fas fa-bullseye text-3xl text-red-800"></i>
+        </div>
+        <h3 class="text-xl font-bold text-center text-gray-800 mb-4">Misi</h3>
+        <ul class="text-gray-600 space-y-2">
+          <li>• Menyediakan pendidikan berkualitas</li>
+          <li>• Mengembangkan teknologi dan inovasi</li>
+          <li>• Membentuk karakter profesional</li>
+          <li>• Meningkatkan kerja sama industri</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Statistik -->
+<div class="py-20 bg-red-800">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div>
+        <i class="fas fa-graduation-cap text-4xl text-yellow-500 mb-4"></i>
+        <p class="text-4xl font-bold text-white">5000+</p>
+        <p class="text-gray-300">Lulusan</p>
+      </div>
+      <div>
+        <i class="fas fa-user-tie text-4xl text-yellow-500 mb-4"></i>
+        <p class="text-4xl font-bold text-white">50+</p>
+        <p class="text-gray-300">Dosen</p>
+      </div>
+      <div>
+        <i class="fas fa-building text-4xl text-yellow-500 mb-4"></i>
+        <p class="text-4xl font-bold text-white">3</p>
+        <p class="text-gray-300">Kampus</p>
+      </div>
+      <div>
+        <i class="fas fa-handshake text-4xl text-yellow-500 mb-4"></i>
+        <p class="text-4xl font-bold text-white">100+</p>
+        <p class="text-gray-300">Mitra</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-8">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <p class="text-gray-400">© 2026 ITBM POLMAN. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
