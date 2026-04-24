@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ITBM POLMAN</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+  body { font-family: 'Poppins', sans-serif; }
+  .hero-slide { transition: all 0.5s ease-in-out; }
+  .hero-slide.active { opacity: 1; transform: scale(1); }
+  .hero-slide:not(.active) { opacity: 0; transform: scale(1.1); }
+  .gradient-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7)); }
+</style>
+</head>
+
+<body class="bg-gray-50">
+
+<!-- Navbar -->
+<nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-lg transition-all duration-300" id="navbar">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center">
+        <i class="fas fa-university text-2xl text-red-800 mr-2"></i>
+        <span class="text-xl font-bold text-red-800">ITBM POLMAN</span>
+      </div>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="#" class="text-gray-700 hover:text-red-800 font-medium transition">Home</a>
+        <a href="#tentang" class="text-gray-700 hover:text-red-800 font-medium transition">Tentang</a>
+        <a href="#keunggulan" class="text-gray-700 hover:text-red-800 font-medium transition">Keunggulan</a>
+        <a href="#galeri" class="text-gray-700 hover:text-red-800 font-medium transition">Galeri</a>
+        <a href="#kontak" class="px-5 py-2 bg-red-800 text-white rounded-full hover:bg-red-900 transition">Kontak</a>
+      </div>
+      <button class="md:hidden text-gray-700" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile Menu -->
+  <div class="hidden md:hidden bg-white border-t" id="mobile-menu">
+    <a href="#" class="block px-4 py-3 text-gray-700 hover:bg-red-50">Home</a>
+    <a href="#tentang" class="block px-4 py-3 text-gray-700 hover:bg-red-50">Tentang</a>
+    <a href="#keunggulan" class="block px-4 py-3 text-gray-700 hover:bg-red-50">Keunggulan</a>
+    <a href="#galeri" class="block px-4 py-3 text-gray-700 hover:bg-red-50">Galeri</a>
+    <a href="#kontak" class="block px-4 py-3 text-gray-700 hover:bg-red-50">Kontak</a>
+  </div>
+</nav>
+
+<!-- HERO CAROUSEL -->
+<div class="relative h-screen overflow-hidden">
+  <div class="hero-slides absolute inset-0" id="hero-slides">
+    <div class="hero-slide active absolute inset-0">
+      <img src="kampus.jpeg" class="w-full h-full object-cover">
+      <div class="gradient-overlay absolute inset-0"></div>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="text-center text-white px-4">
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">Selamat Datang di ITBM POLMAN</h1>
+          <p class="text-xl md:text-2xl mb-8 text-gray-200">Mencetak Generasi Unggul & Siap Kerja</p>
+          <a href="#tentang" class="inline-block px-8 py-3 bg-red-800 hover:bg-red-900 rounded-full font-semibold transition transform hover:scale-105">Pelajari Lebih Lanjut</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide absolute inset-0">
+      <img src="kampus 2.jpeg" class="w-full h-full object-cover">
+      <div class="gradient-overlay absolute inset-0"></div>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="text-center text-white px-4">
+          <h1 class="text-4xl md:text-6xl font-bold mb-4">Fasilitas Modern</h1>
+          <p class="text-xl md:text-2xl mb-8 text-gray-200">Laboratorium Lengkap untuk Praktik Terbaik</p>
+          <a href="#keunggulan" class="inline-block px-8 py-3 bg-red-800 hover:bg-red-900 rounded-full font-semibold transition transform hover:scale-105">Lihat Fasilitas</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide absolute inset-0">
+      <img src="kampus 3.png" class="w-full h-full object-cover">
+      <div class="gradient-overlay absolute inset-0"></div>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="text-center text-white px-4">
+          <h1 class="text-4xl md:text-6xl font-bold mb-4">Karir Cerah</h1>
+          <p class="text-xl md:text-2xl mb-8 text-gray-200">Dukungan Karir dan Kerja Sama Industri</p>
+          <a href="#kontak" class="inline-block px-8 py-3 bg-red-800 hover:bg-red-900 rounded-full font-semibold transition transform hover:scale-105">Hubungi Kami</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Carousel Controls -->
+  <button class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition" onclick="prevSlide()">
+    <i class="fas fa-chevron-left text-white text-xl"></i>
+  </button>
+  <button class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center transition" onclick="nextSlide()">
+    <i class="fas fa-chevron-right text-white text-xl"></i>
+  </button>
+  <!-- Indicators -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-3" id="indicators">
+    <button class="w-3 h-3 rounded-full bg-white" onclick="goToSlide(0)"></button>
+    <button class="w-3 h-3 rounded-full bg-white/50" onclick="goToSlide(1)"></button>
+    <button class="w-3 h-3 rounded-full bg-white/50" onclick="goToSlide(2)"></button>
+  </div>
+</div>
+
+<!-- Tentang -->
+<div class="section py-20 bg-white" id="tentang">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center text-red-800 mb-4">Tentang Kampus</h2>
+    <div class="w-24 h-1 bg-yellow-500 mx-auto mb-8"></div>
+    <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto">ITBM POLMAN merupakan institusi pendidikan yang berfokus pada teknologi, bisnis, dan karakter mahasiswa. Kami berkomitmen untuk memberikan pendidikan terbaik dengan fasilitas modern dan pengajar profesional.</p>
+  </div>
+</div>
+
+<!-- Keunggulan -->
+<div class="section py-20 bg-gray-50" id="keunggulan">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center text-red-800 mb-4">Keunggulan Kami</h2>
+    <div class="w-24 h-1 bg-yellow-500 mx-auto mb-12"></div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
+        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <i class="fas fa-chalkboard-teacher text-3xl text-red-800"></i>
+        </div>
+        <h3 class="text-xl font-bold text-center text-gray-800 mb-4">Dosen Profesional</h3>
+        <p class="text-gray-600 text-center">Tenaga pengajar berpengalaman dari industri dan akademisi.</p>
+      </div>
+      <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
+        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <i class="fas fa-laptop-code text-3xl text-red-800"></i>
+        </div>
+        <h3 class="text-xl font-bold text-center text-gray-800 mb-4">Fasilitas Modern</h3>
+        <p class="text-gray-600 text-center">Laboratorium lengkap dengan teknologi terkini.</p>
+      </div>
+      <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-2">
+        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <i class="fas fa-handshake text-3xl text-red-800"></i>
+        </div>
+        <h3 class="text-xl font-bold text-center text-gray-800 mb-4">Kerja Sama Industri</h3>
+        <p class="text-gray-600 text-center">Peluang kerja yang luas setelah lulus.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Galeri -->
+<div class="section py-20 bg-white" id="galeri">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center text-red-800 mb-4">Galeri Kampus</h2>
+    <div class="w-24 h-1 bg-yellow-500 mx-auto mb-12"></div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="group relative overflow-hidden rounded-2xl shadow-lg">
+        <img src="kampus.jpeg" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+          <i class="fas fa-university text-4xl text-white"></i>
+        </div>
+      </div>
+      <div class="group relative overflow-hidden rounded-2xl shadow-lg">
+        <img src="kampus 2.jpeg" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+          <i class="fas fa-book text-4xl text-white"></i>
+        </div>
+      </div>
+      <div class="group relative overflow-hidden rounded-2xl shadow-lg">
+        <img src="kampus 4.jpeg" class="w-full h-64 object-cover transition transform group-hover:scale-110">
+        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+          <i class="fas fa-users text-4xl text-white"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Testimoni -->
+<div class="section py-20 bg-red-800" id="testimoni">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center text-white mb-4">Testimoni Mahasiswa</h2>
+    <div class="w-24 h-1 bg-yellow-500 mx-auto mb-12"></div>
+    <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl max-w-2xl mx-auto border border-white/20">
+      <i class="fas fa-quote-left text-4xl text-yellow-500 mb-4"></i>
+      <p class="text-xl text-white text-center mb-6">"Kampus ini sangat membantu saya berkembang dan siap memasuki dunia kerja!"</p>
+      <p class="text-yellow-500 font-bold text-center">- Andi Mahasiswa ITBM POLMAN</p>
+    </div>
+  </div>
+</div>
+
+<!-- Kontak -->
+<div class="section py-20 bg-gray-50" id="kontak">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center text-red-800 mb-4">Hubungi Kami</h2>
+    <div class="w-24 h-1 bg-yellow-500 mx-auto mb-12"></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div class="bg-white p-8 rounded-2xl shadow-lg">
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
+            <i class="fas fa-envelope text-red-800"></i>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Email</p>
+            <p class="font-semibold text-gray-800">aslam@itbmpolman.ac.id</p>
+          </div>
+        </div>
+        <div class="flex items-center mb-4">
+          <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
+            <i class="fas fa-phone text-red-800"></i>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Telepon</p>
+            <p class="font-semibold text-gray-800">0858-2558-7404</p>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
+            <i class="fas fa-map-marker-alt text-red-800"></i>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Alamat</p>
+            <p class="font-semibold text-gray-800">Jl. Pendidikan No. 123</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-8 rounded-2xl shadow-lg">
+        <h3 class="text-xl font-bold text-gray-800 mb-4">Kirim Pesan</h3>
+        <form class="space-y-4">
+          <input type="text" placeholder="Nama Anda" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-800 focus:border-transparent">
+          <input type="email" placeholder="Email Anda" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-800 focus:border-transparent">
+          <textarea placeholder="Pesan Anda" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-800 focus:border-transparent"></textarea>
+          <button type="button" class="w-full py-3 bg-red-800 text-white rounded-lg hover:bg-red-900 transition font-semibold">Kirim Pesan</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-red-900 text-white py-8">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <div class="flex justify-center space-x-6 mb-4">
+      <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition">
+        <i class="fab fa-youtube"></i>
+      </a>
+    </div>
+    <p class="text-gray-300">© 2026 ITBM POLMAN. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const indicators = document.querySelectorAll('#indicators button');
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.remove('active');
+    if (i === index) {
+      slide.classList.add('active');
+    }
+  });
+  indicators.forEach((ind, i) => {
+    ind.classList.remove('bg-white');
+    ind.classList.add('bg-white/50');
+    if (i === index) {
+      ind.classList.remove('bg-white/50');
+      ind.classList.add('bg-white');
+    }
+  });
+  currentSlide = index;
+}
+
+function nextSlide() {
+  showSlide((currentSlide + 1) % slides.length);
+}
+
+function prevSlide() {
+  showSlide((currentSlide - 1 + slides.length) % slides.length);
+}
+
+function goToSlide(index) {
+  showSlide(index);
+}
+
+setInterval(nextSlide, 5000);
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  const navbar = document.getElementById('navbar');
+  if (window.scrollY > 50) {
+    navbar.classList.add('shadow-lg');
+  } else {
+    navbar.classList.remove('shadow-lg');
+  }
+});
+</script>
+
+</body>
+</html>
