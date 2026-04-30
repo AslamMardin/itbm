@@ -128,39 +128,88 @@ body{background:#fff7f0;color:#333}
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
-// CAROUSEL
-let slides=document.querySelectorAll('.slide');
-let index=0;
-setInterval(()=>{
-slides[index].classList.remove('active');
-index=(index+1)%slides.length;
-slides[index].classList.add('active');
-},3000);
+// ================= CAROUSEL =================
+let slides = document.querySelectorAll('.slide');
+let index = 0;
+setInterval(() => {
+  slides[index].classList.remove('active');
+  index = (index + 1) % slides.length;
+  slides[index].classList.add('active');
+}, 3000);
 
-// CART
-let total=0;let cart=[];
-function addToCart(nama,harga,id){
-let qty=parseInt(document.getElementById(id).value);
-cart.push({nama,harga,qty});
-let li=document.createElement('li');
-li.innerText=`${nama} x${qty}`;
-document.getElementById('cartList').appendChild(li);
-total+=harga*qty;
-document.getElementById('total').innerText=total;
+// ================= CART =================
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-function toggleCart(){
-document.getElementById('cartPanel').classList.toggle('active');}
+function renderCart() {
+  let list = document.getElementById("cartList");
+  let totalEl = document.getElementById("total");
 
-function checkoutWA(){
-let text="Pesanan:%0A";
-cart.forEach(i=>{text+=`${i.nama} x${i.qty}%0A`});
-text+=`Total: Rp ${total}`;
-window.open(`https://wa.me/6281234567890?text=${text}`);
+  list.innerHTML = "";
+  let total = 0;
+
+  cart.forEach((item, i) => {
+    let li = document.createElement("li");
+    li.innerHTML = `
+      ${item.nama} x${item.qty} 
+      <button onclick="removeItem(${i})">❌</button>
+    `;
+    list.appendChild(li);
+
+    total += item.harga * item.qty;
+  });
+
+  totalEl.innerText = total;
 }
 
-// MAP
-var map=L.map('map').setView([-3.4105,119.3432],15);
+function addToCart(nama, harga, id) {
+  let qty = parseInt(document.getElementById(id).value);
+
+  // cek apakah sudah ada
+  let existing = cart.find(item => item.nama === nama);
+
+  if (existing) {
+    existing.qty += qty;
+  } else {
+    cart.push({ nama, harga, qty });
+  }
+
+  saveCart();
+  renderCart();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  saveCart();
+  renderCart();
+}
+
+function toggleCart() {
+  document.getElementById('cartPanel').classList.toggle('active');
+}
+
+function checkoutWA() {
+  let text = "Pesanan:%0A";
+  let total = 0;
+
+  cart.forEach(i => {
+    text += `${i.nama} x${i.qty}%0A`;
+    total += i.harga * i.qty;
+  });
+
+  text += `Total: Rp ${total}`;
+
+  window.open(`https://wa.me/6281234567890?text=${text}`);
+}
+
+// load saat pertama kali
+renderCart();
+
+// ================= MAP =================
+var map = L.map('map').setView([-3.4105,119.3432],15);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 L.marker([-3.4105,119.3432]).addTo(map).bindPopup('Risol Rahma').openPopup();
 </script>
