@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Jago | Koleksi Ayam Juara & Berkualitas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap');
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            scroll-behavior: smooth;
+        }
+
+        .font-brand { font-family: 'Playfair Display', serif; }
+
+        .bg-cerah {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFFFFF 100%);
+        }
+
+        .gradient-emas {
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .shadow-premium {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .btn-utama {
+            background: linear-gradient(90deg, #FF8C00, #FF4500);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-utama:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 69, 0, 0.3);
+        }
+
+        .nav-active {
+            color: #FF4500;
+            font-weight: 700;
+            border-bottom: 2px solid #FF4500;
+        }
+
+        .card-ayam {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #f0f0f0;
+        }
+
+        .card-ayam:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: #FFD700;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigasi -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="bg-orange-600 p-2 rounded-lg">
+                    <i class="fas fa-kiwi-bird text-white text-xl"></i>
+                </div>
+                <span class="text-2xl font-brand font-black tracking-tight text-gray-900">ALEX <span class="text-orange-600">JAGO</span></span>
+            </div>
+            
+            <div class="hidden lg:flex space-x-8 text-sm font-medium uppercase tracking-wider">
+                <a href="#beranda" class="hover:text-orange-600 transition">Beranda</a>
+                <a href="#produk" class="hover:text-orange-600 transition">Koleksi Ayam</a>
+                <a href="#tentang" class="hover:text-orange-600 transition">Tentang Kami</a>
+                <a href="#kontak" class="hover:text-orange-600 transition">Kontak</a>
+            </div>
+
+            <a href="https://wa.me/628123456789" class="hidden lg:block btn-utama text-white px-6 py-2.5 rounded-full font-bold text-xs tracking-wide">
+                KONSULTASI GRATIS
+            </a>
+            
+            <div class="lg:hidden text-gray-900">
+                <button id="menu-btn" class="text-2xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-[60] bg-white flex flex-col items-center justify-center space-y-8 text-2xl font-brand text-gray-900">
+        <button id="close-menu" class="absolute top-6 right-6 text-3xl">&times;</button>
+        <a href="#beranda" class="hover:text-orange-600">Beranda</a>
+        <a href="#produk" class="hover:text-orange-600">Koleksi</a>
+        <a href="#tentang" class="hover:text-orange-600">Tentang</a>
+        <a href="#kontak" class="hover:text-orange-600">Kontak</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-cerah overflow-hidden">
+        <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center">
+            <div class="lg:w-1/2 z-10 text-center lg:text-left" data-aos="fade-right">
+                <span class="inline-block bg-orange-100 text-orange-600 font-bold px-4 py-1 rounded-full text-xs uppercase tracking-widest mb-6">Peternakan Ayam No. 1</span>
+                <h1 class="text-5xl md:text-7xl font-brand text-gray-900 mb-6 leading-tight">Jagoan Tangguh, <br><span class="text-orange-600">Kualitas Juara.</span></h1>
+                <p class="text-lg text-gray-600 mb-10 max-w-lg leading-relaxed">
+                    Menyediakan berbagai jenis ayam pilihan dengan trah unggulan dan perawatan intensif. Sehat, kuat, dan siap membanggakan Anda.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#produk" class="btn-utama text-white px-8 py-4 rounded-2xl font-bold text-sm shadow-lg text-center">Lihat Koleksi Ayam</a>
+                    <a href="#tentang" class="bg-white border-2 border-gray-100 hover:border-orange-600 px-8 py-4 rounded-2xl font-bold text-sm transition text-center text-gray-700">Kenapa Alex Jago?</a>
+                </div>
+            </div>
+            <div class="lg:w-1/2 mt-16 lg:mt-0 relative" data-aos="fade-left">
+                <div class="relative z-10">
+                    <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=800&q=80" class="rounded-[2rem] shadow-2xl border-[12px] border-white" alt="Ayam Juara">
+                </div>
+                <!-- Dekorasi -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-yellow-400 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+                <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-orange-400 rounded-full blur-3xl opacity-20"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keunggulan -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="flex items-center space-x-4 p-6 rounded-2xl hover:bg-orange-50 transition border border-transparent hover:border-orange-100" data-aos="zoom-in">
+                <div class="bg-orange-500 w-12 h-12 rounded-xl flex items-center justify-center text-white text-xl flex-shrink-0">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900">Kesehatan Terjamin</h4>
+                    <p class="text-xs text-gray-500">Vaksin rutin dan vitamin berkualitas.</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4 p-6 rounded-2xl hover:bg-orange-50 transition border border-transparent hover:border-orange-100" data-aos="zoom-in" data-aos-delay="100">
+                <div class="bg-yellow-500 w-12 h-12 rounded-xl flex items-center justify-center text-white text-xl flex-shrink-0">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900">Trah Unggulan</h4>
+                    <p class="text-xs text-gray-500">Keturunan langsung dari jawara pilihan.</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4 p-6 rounded-2xl hover:bg-orange-50 transition border border-transparent hover:border-orange-100" data-aos="zoom-in" data-aos-delay="200">
+                <div class="bg-blue-500 w-12 h-12 rounded-xl flex items-center justify-center text-white text-xl flex-shrink-0">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900">Kirim Seluruh RI</h4>
+                    <p class="text-xs text-gray-500">Pengiriman aman dengan garansi nyawa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Katalog Produk -->
+    <section id="produk" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-brand text-gray-900 mb-4">Koleksi <span class="text-orange-600">Terbaik</span> Kami</h2>
+                <p class="text-gray-500 max-w-xl mx-auto">Update stok ayam jagoan terbaru hari ini. Siapa cepat dia dapat!</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Produk 1 -->
+                <div class="card-ayam bg-white rounded-3xl overflow-hidden" data-aos="fade-up">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="download (3).jpg" class="w-full h-full object-cover" alt="Ayam Bangkok">
+                        <div class="absolute top-4 left-4 bg-orange-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Stok Terbatas</div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-orange-600 font-bold text-xs uppercase tracking-widest">Bangkok Pakhoy</span>
+                            <span class="text-gray-400 text-xs font-semibold">11 Bulan</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 uppercase">Si Guntur Merapi</h3>
+                        <p class="text-2xl font-bold text-gray-900 mb-6">Rp 3.500.000</p>
+                        <div class="flex gap-2 mb-6">
+                            <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-1 rounded">Berat 3.2Kg</span>
+                            <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-1 rounded">Tulangan Tebal</span>
+                            <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-1 rounded">Amanah</span>
+                        </div>
+                        <button onclick="orderWA('Si Guntur Merapi')" class="w-full py-4 btn-utama text-white rounded-2xl font-bold text-xs uppercase tracking-widest shadow-md">
+                            Ambil Jagoan Ini
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Produk 2 -->
+                <div class="card-ayam bg-white rounded-3xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="Kodi rasangi.jpg" class="w-full h-full object-cover" alt="Ayam Shamo">
+                        <div class="absolute top-4 left-4 bg-yellow-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Kualitas Kontes</div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-orange-600 font-bold text-xs uppercase tracking-widest">Shamo Orisinal</span>
+                            <span class="text-gray-400 text-xs font-semibold">14 Bulan</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 uppercase">Kaisar Emas</h3>
+                        <p class="text-2xl font-bold text-gray-900 mb-6">Rp 7.500.000</p>
+                        <div class="flex gap-2 mb-6">
+                            <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-1 rounded">Berat 4.1Kg</span>
+                            <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-1 rounded">Impor</span>
+                            <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-1 rounded">Vaksin OK</span>
+                        </div>
+                        <button onclick="orderWA('Kaisar Emas')" class="w-full py-4 btn-utama text-white rounded-2xl font-bold text-xs uppercase tracking-widest shadow-md">
+                            Hubungi Admin
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Produk 3 -->
+                <div class="card-ayam bg-white rounded-3xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="rooster in Thailand.jpg" class="w-full h-full object-cover" alt="Anakan Ayam">
+                        <div class="absolute top-4 left-4 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Anakan Pilihan</div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-orange-600 font-bold text-xs uppercase tracking-widest">Paket Ternak</span>
+                            <span class="text-gray-400 text-xs font-semibold">2 Bulan</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 uppercase">Paket 5 Ekor Junior</h3>
+                        <p class="text-2xl font-bold text-gray-900 mb-6">Rp 1.250.000</p>
+                        <div class="flex gap-2 mb-6">
+                            <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-1 rounded">Trah Juara</span>
+                            <span class="bg-gray-100 text-gray-600 text-[10px] px-2 py-1 rounded">Pakan Premium</span>
+                        </div>
+                        <button onclick="orderWA('Paket Junior')" class="w-full py-4 btn-utama text-white rounded-2xl font-bold text-xs uppercase tracking-widest shadow-md">
+                            Pesan Paket
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang Kami -->
+    <section id="tentang" class="py-24 bg-white">
+        <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
+            <div class="lg:w-1/2" data-aos="fade-right">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=800&q=80" class="rounded-[2.5rem] shadow-xl" alt="Peternakan">
+                    <div class="absolute -bottom-6 -right-6 bg-yellow-400 p-8 rounded-3xl shadow-lg hidden md:block">
+                        <p class="text-4xl font-bold text-gray-900">10+</p>
+                        <p class="text-xs font-bold uppercase text-gray-700 tracking-tighter">Tahun Pengalaman</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-1/2" data-aos="fade-left">
+                <h2 class="text-4xl font-brand text-gray-900 mb-6 leading-tight">Membangun Legenda dari <span class="text-orange-600">Kandang Sendiri.</span></h2>
+                <p class="text-gray-600 leading-relaxed mb-8">
+                    Sejak tahun 2015, Alex Jago telah berkomitmen untuk menghadirkan kualitas ayam petarung dan hias kelas atas. Kami percaya bahwa perawatan yang sepenuh hati dan pemilihan genetik yang tepat adalah kunci melahirkan jagoan yang tangguh.
+                </p>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-orange-50 p-4 rounded-2xl">
+                        <p class="font-bold text-orange-600 text-xl">5.000+</p>
+                        <p class="text-xs text-gray-500">Pelanggan Puas</p>
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-2xl">
+                        <p class="font-bold text-yellow-600 text-xl">24/7</p>
+                        <p class="text-xs text-gray-500">Layanan Konsultasi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak -->
+    <footer id="kontak" class="bg-gray-900 text-white pt-24 pb-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                <div>
+                    <span class="text-3xl font-brand font-black text-orange-500 mb-6 block">ALEX JAGO</span>
+                    <p class="text-gray-400 text-sm leading-loose">
+                        Pusat jual beli ayam berkualitas tinggi dengan jaminan kesehatan dan keaslian trah. Kirim ke seluruh Nusantara dengan amanah.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-widest mb-6">Navigasi</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#beranda" class="hover:text-orange-500 transition">Beranda</a></li>
+                        <li><a href="#produk" class="hover:text-orange-500 transition">Koleksi</a></li>
+                        <li><a href="#tentang" class="hover:text-orange-500 transition">Tentang Kami</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-widest mb-6">Hubungi Kami</h4>
+                    <div class="space-y-4 text-sm text-gray-400">
+                        <p><i class="fas fa-map-marker-alt text-orange-500 mr-2"></i> Yogyakarta, Indonesia</p>
+                        <p><i class="fab fa-whatsapp text-green-500 mr-2"></i> 0812-3456-7890</p>
+                        <p><i class="fab fa-instagram text-pink-500 mr-2"></i> @alex_jago_farm</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-12 text-center text-xs text-gray-500 tracking-widest">
+                <p>© 2026 ALEX JAGO FARM. DIKEMBANGKAN DENGAN CINTA UNTUK PENGHOBI AYAM.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/628123456789" class="fixed bottom-6 right-6 z-[100] group">
+        <div class="bg-green-500 text-white w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl hover:scale-110 transition duration-300">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </div>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        // Mobile Menu
+        const btn = document.getElementById('menu-btn');
+        const close = document.getElementById('close-menu');
+        const menu = document.getElementById('mobile-menu');
+        
+        btn.onclick = () => menu.classList.remove('hidden');
+        close.onclick = () => menu.classList.add('hidden');
+        menu.onclick = (e) => { if(e.target.tagName === 'A') menu.classList.add('hidden'); }
+
+        function orderWA(namaAyam) {
+            const pesan = `Halo Admin Alex Jago, saya tertarik dengan "${namaAyam}". Apakah masih tersedia? Mohon info video terbaru dan harganya. Terima kasih!`;
+            window.open(`https://wa.me/628123456789?text=${encodeURIComponent(pesan)}`, '_blank');
+        }
+    </script>
+</body>
+</html>

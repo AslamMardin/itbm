@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITBM POLMAN | Unggul & Profesional</title>
+
+    <!-- Google Fonts: Montserrat & Playfair Display untuk kesan mewah -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons (Inline SVGs used for reliability) -->
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <style>
+        :root {
+            --maroon-deep: #4a0404;
+            --maroon-primary: #800020;
+            --maroon-light: #a52a2a;
+            --gold-accent: #d4af37;
+            --gold-hover: #f1c40f;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --text-dark: #1a1a1a;
+            --text-gray: #555555;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 12px 8%;
+            background: var(--maroon-primary);
+        }
+
+        .navbar.scrolled .nav-links a, 
+        .navbar.scrolled .logo-text {
+            color: var(--white);
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--maroon-primary);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--maroon-deep);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--gold-accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-accent);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(74, 4, 4, 0.85), rgba(128, 0, 32, 0.7)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--gold-accent);
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 16px 40px;
+            background: var(--gold-accent);
+            color: var(--maroon-deep);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--white);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .btn-outline {
+            padding: 16px 40px;
+            border: 2px solid var(--white);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--maroon-primary);
+        }
+
+        /* --- Section Styling --- */
+        .section-padding {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--maroon-primary);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--gold-accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* --- Grid & Cards --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 50px 40px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #eee;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--maroon-light);
+            box-shadow: 0 20px 40px rgba(128, 0, 32, 0.1);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--gold-accent);
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--maroon-primary);
+        }
+
+        /* --- Stats Section --- */
+        .stats-banner {
+            background: var(--maroon-primary);
+            color: var(--white);
+            display: flex;
+            justify-content: space-around;
+            padding: 80px 8%;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--gold-accent);
+            display: block;
+        }
+
+        .stat-label {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* --- Map & Contact --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        #map {
+            height: 500px;
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-info {
+            padding: 20px 0;
+        }
+
+        .info-block {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--maroon-primary);
+            color: var(--gold-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--maroon-deep);
+            color: var(--white);
+            padding: 80px 8% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--gold-accent);
+        }
+
+        .footer-links h4 {
+            margin-bottom: 25px;
+            border-left: 3px solid var(--gold-accent);
+            padding-left: 15px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-accent);
+            padding-left: 8px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 992px) {
+            .contact-container { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .navbar { padding: 15px 5%; }
+            .nav-links { display: none; } /* Could add a hamburger menu here */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="logo-text">ITBM POLMAN</div>
+        <ul class="nav-links">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#prodi">Program Studi</a></li>
+            <li><a href="#kontak">Hubungi Kami</a></li>
+        </ul>
+        <a href="#" class="btn-primary" style="padding: 10px 25px; font-size: 0.8rem;">PMB 2026</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>KAMPUS ITBM <br><span>POLMAN</span></h1>
+            <p>Institut Teknologi dan Bisnis Muhammadiyah Polewali Mandar menghadirkan pendidikan berkualitas dunia dengan karakter Islami yang kuat.</p>
+            <div class="cta-group">
+                <a href="#prodi" class="btn-primary">Eksplor Program</a>
+                <a href="#about" class="btn-outline">Tentang Kampus</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <div class="stats-banner">
+        <div class="stat-item">
+            <span class="stat-number">1200+</span>
+            <span class="stat-label">Mahasiswa Aktif</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Dosen Ahli</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">4</span>
+            <span class="stat-label">Program Studi Unggulan</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">95%</span>
+            <span class="stat-label">Lulusan Terserap Kerja</span>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+        <div class="section-title">
+            <h2>Pendidikan Berkemajuan</h2>
+            <p style="max-width: 700px; margin: auto; color: var(--text-gray);">Menjadi pusat keunggulan di Sulawesi Barat yang memadukan kecanggihan teknologi dengan integritas moral.</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div style="font-size: 3rem; margin-bottom: 20px;">🎓</div>
+                <h3>Kurikulum Industri</h3>
+                <p>Materi ajar yang disusun bersama pakar industri untuk memastikan kesiapan kerja lulusan kami.</p>
+            </div>
+            <div class="feature-card">
+                <div style="font-size: 3rem; margin-bottom: 20px;">🔬</div>
+                <h3>Riset & Inovasi</h3>
+                <p>Fasilitas laboratorium modern untuk mendukung kreativitas mahasiswa dalam menciptakan solusi digital.</p>
+            </div>
+            <div class="feature-card">
+                <div style="font-size: 3rem; margin-bottom: 20px;">🕌</div>
+                <h3>Karakter Islami</h3>
+                <p>Pembinaan moral dan akhlak berdasarkan nilai-nilai Al-Islam dan Kemuhammadiyahan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Studi -->
+    <section id="prodi" class="section-padding" style="background: var(--off-white);">
+        <div class="section-title">
+            <h2>Program Studi Pilihan</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card" style="border-top: 5px solid var(--maroon-primary);">
+                <h3>S1 Informatika</h3>
+                <p>Mempelajari Software Engineering, AI, dan Cyber Security.</p>
+                <a href="#" style="color: var(--maroon-primary); font-weight: 700; text-decoration: none; margin-top: 20px; display: inline-block;">Selengkapnya &rarr;</a>
+            </div>
+            <div class="feature-card" style="border-top: 5px solid var(--maroon-primary);">
+                <h3>S1 Bisnis Digital</h3>
+                <p>Menguasai E-Commerce, Digital Marketing, dan Analisis Data Bisnis.</p>
+                <a href="#" style="color: var(--maroon-primary); font-weight: 700; text-decoration: none; margin-top: 20px; display: inline-block;">Selengkapnya &rarr;</a>
+            </div>
+            <div class="feature-card" style="border-top: 5px solid var(--maroon-primary);">
+                <h3>S1 Agribisnis</h3>
+                <p>Inovasi pertanian cerdas dan manajemen rantai pasok modern.</p>
+                <a href="#" style="color: var(--maroon-primary); font-weight: 700; text-decoration: none; margin-top: 20px; display: inline-block;">Selengkapnya &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map & Contact Section -->
+    <section id="kontak" class="section-padding">
+        <div class="section-title">
+            <h2>Kunjungi Kampus Kami</h2>
+        </div>
+        <div class="contact-container">
+            <div id="map"></div>
+            <div class="contact-info">
+                <div class="info-block">
+                    <div class="info-icon">📍</div>
+                    <div>
+                        <h4 style="color: var(--maroon-primary);">Alamat Kampus</h4>
+                        <p>Jl. Andi Depu, Kec. Polewali, Kabupaten Polewali Mandar, Sulawesi Barat 91411</p>
+                    </div>
+                </div>
+                <div class="info-block">
+                    <div class="info-icon">📞</div>
+                    <div>
+                        <h4 style="color: var(--maroon-primary);">Layanan Informasi</h4>
+                        <p>0822-3176-5694 / 0812-3456-7890</p>
+                    </div>
+                </div>
+                <div class="info-block">
+                    <div class="info-icon">📧</div>
+                    <div>
+                        <h4 style="color: var(--maroon-primary);">Surel Resmi</h4>
+                        <p>info@itbmpolman.ac.id</p>
+                    </div>
+                </div>
+                <div style="margin-top: 40px; padding: 30px; background: var(--maroon-primary); color: white; border-radius: 12px;">
+                    <h4>Butuh Bantuan?</h4>
+                    <p style="margin-bottom: 20px; font-size: 0.9rem;">Tinggalkan nomor WhatsApp Anda, tim kami akan segera menghubungi Anda.</p>
+                    <input type="text" placeholder="Nomor WhatsApp..." style="width: 100%; padding: 12px; border: none; border-radius: 4px; margin-bottom: 10px;">
+                    <button class="btn-primary" style="width: 100%; border: none; cursor: pointer;">Kirim Sekarang</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <h3>ITBM POLMAN</h3>
+                <p>Mencetak sumber daya manusia yang kompetitif dalam bidang teknologi dan bisnis dengan nilai-nilai luhur Muhammadiyah.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigasi</h4>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#prodi">Akademik</a></li>
+                    <li><a href="#">Penerimaan</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Ikuti Kami</h4>
+                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 15px;">Dapatkan pembaruan terkini mengenai kegiatan kampus melalui media sosial kami.</p>
+                <div style="display: flex; gap: 15px; font-size: 1.5rem;">
+                    <a href="#">🌐</a> <a href="#">📸</a> <a href="#">📘</a> <a href="#">🎥</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Institut Teknologi dan Bisnis Muhammadiyah Polewali Mandar. Seluruh Hak Cipta Dilindungi.
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.onscroll = function() {
+            var nav = document.getElementById('navbar');
+            if (window.pageYOffset > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        };
+
+        // Initialize Map
+        document.addEventListener('DOMContentLoaded', function() {
+            var map = L.map('map', {
+                scrollWheelZoom: false
+            }).setView([-3.4005159, 119.2315156], 16);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            var customIcon = L.divIcon({
+                className: 'custom-div-icon',
+                html: "<div style='background-color:#800020; width:20px; height:20px; border-radius:50%; border:3px solid #d4af37;'></div>",
+                iconSize: [20, 20],
+                iconAnchor: [10, 10]
+            });
+
+            L.marker([-3.4005159, 119.2315156], {icon: customIcon})
+                .addTo(map)
+                .bindPopup('<b>ITBM POLMAN</b><br>Kampus Berkemajuan.')
+                .openPopup();
+        });
+    </script>
+</body>
+</html>
