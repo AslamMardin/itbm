@@ -16,305 +16,278 @@ body{background:#fff7f0;color:#333}
 --accent:#ffd166;
 }
 
-.navbar{position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:15px 30px;background:linear-gradient(90deg,var(--primary),var(--secondary));color:white}
+.navbar{
+display:flex;justify-content:space-between;align-items:center;
+padding:15px 30px;
+background:linear-gradient(90deg,var(--primary),var(--secondary));
+color:white
+}
+
 .navbar a{color:white;margin-left:20px;text-decoration:none}
 
-/* HERO CAROUSEL */
-.hero{position:relative;height:70vh;overflow:hidden}
+.cart-icon{
+position:relative;
+cursor:pointer;
+}
+
+#cartCount{
+position:absolute;
+top:-8px;
+right:-10px;
+background:red;
+color:white;
+border-radius:50%;
+padding:3px 8px;
+font-size:12px;
+}
+
+/* HERO */
+.hero{position:relative;height:60vh;overflow:hidden}
 .slide{position:absolute;width:100%;height:100%;background-size:cover;background-position:center;opacity:0;transition:1s}
 .slide.active{opacity:1}
-.hero-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:white;text-align:center;z-index:2}
-.hero-text h1{font-size:45px}
 
-.section{padding:60px 20px;text-align:center}
-.section h2{color:var(--primary);margin-bottom:20px}
+.hero-text{
+position:absolute;top:50%;left:50%;
+transform:translate(-50%,-50%);
+color:white;text-align:center;
+}
 
+/* PRODUK */
+.section{padding:50px 20px;text-align:center}
 .cards{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
-.card{width:240px;background:white;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.1);overflow:hidden;transition:.3s}
-.card:hover{transform:translateY(-10px) scale(1.03)}
+
+.card{
+width:240px;background:white;border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+overflow:hidden
+}
+
 .card img{width:100%;height:150px;object-fit:cover}
+
 .card-content{padding:15px}
+
 .price{color:var(--primary);font-weight:bold}
 
-.btn{background:var(--primary);color:white;border:none;padding:8px 15px;border-radius:20px;cursor:pointer;margin-top:8px}
+.btn{
+background:var(--primary);color:white;border:none;
+padding:8px 15px;border-radius:20px;cursor:pointer;margin-top:8px
+}
 
-.cart-panel{position:fixed;right:0;top:0;width:320px;height:100%;background:white;box-shadow:-5px 0 20px rgba(0,0,0,0.2);padding:20px;transform:translateX(100%);transition:.4s}
+/* CART PANEL */
+.cart-panel{
+position:fixed;
+right:0;top:0;
+width:320px;height:100%;
+background:white;
+box-shadow:-5px 0 20px rgba(0,0,0,0.2);
+padding:20px;
+transform:translateX(100%);
+transition:.4s;
+overflow:auto;
+}
+
 .cart-panel.active{transform:translateX(0)}
 
-.cart-btn{position:fixed;bottom:20px;right:20px;background:var(--primary);color:white;padding:18px;border-radius:50%;cursor:pointer}
-
-#map{height:300px;border-radius:12px;margin-top:20px}
-.footer{background:var(--primary);color:white;text-align:center;padding:20px}
-
-/* ===== CART MODERN ===== */
-.cart-panel {
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 340px;
-  height: 100%;
-  background: #fff;
-  box-shadow: -10px 0 30px rgba(0,0,0,0.2);
-  display: flex;
-  flex-direction: column;
-  transform: translateX(100%);
-  transition: .4s ease;
-  z-index: 2000;
+.footer{
+background:var(--primary);
+color:white;text-align:center;padding:20px
 }
 
-.cart-panel.active {
-  transform: translateX(0);
-}
-
-/* HEADER */
-.cart-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  background: var(--primary);
-  color: white;
-  font-weight: bold;
-}
-
-.cart-header span {
-  cursor: pointer;
-  font-size: 18px;
-}
-
-/* LIST */
-.cart-list {
-  flex: 1;
-  overflow-y: auto;
-  padding: 15px;
-  list-style: none;
-}
-
-.cart-list li {
-  background: #fff7f0;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-}
-
-.cart-list button {
-  background: crimson;
-  color: white;
-  border: none;
-  padding: 4px 8px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-/* FOOTER */
-.cart-footer {
-  padding: 15px;
-  border-top: 1px solid #eee;
-  background: #fff;
-}
-
-.cart-footer p {
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-
-.checkout {
-  width: 100%;
-  padding: 12px;
-  font-size: 15px;
-  border-radius: 10px;
-}
-
-/* SCROLLBAR NICE */
-.cart-list::-webkit-scrollbar {
-  width: 5px;
-}
-.cart-list::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 10px;
-}
+#map{height:250px;border-radius:12px;margin-top:20px}
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <div class="navbar">
 <h2>Risol Rahma</h2>
+
 <div>
-<a href="index.html">Home</a>
+<a href="#">Home</a>
 <a href="#produk">Produk</a>
 <a href="#kontak">Kontak</a>
+
+<span class="cart-icon" onclick="toggleCart()">
+🛒 <span id="cartCount">0</span>
+</span>
 </div>
 </div>
 
-<!-- HERO CAROUSEL -->
+<!-- HERO -->
 <div class="hero">
-<div class="slide active" style="background-image:url('WhatsApp\ Image\ 2026-04-29\ at\ 23.25.24.jpeg')"></div>
-<div class="slide" style="background-image:url('WhatsApp\ Image\ 2026-04-29\ at\ 23.25.26.jpeg')"></div>
-<div class="slide" style="background-image:url('WhatsApp\ Image\ 2026-04-29\ at\ 23.25.27.jpeg')"></div>
+<div class="slide active" style="background-image:url('photo3.jpg')"></div>
+<div class="slide" style="background-image:url('photo2.jpg')"></div>
+<div class="slide" style="background-image:url('photo4.jpg')"></div>
 
 <div class="hero-text">
-<h1>Risol Lumer & Crispy 🔥</h1>
-<p>Enak, Murah, Bikin Nagih!</p>
+<h1>Risol Lumer 🔥</h1>
+<p>Murah & Nagih!</p>
 </div>
 </div>
 
+<!-- PRODUK -->
 <div class="section" id="produk">
 <h2>Menu Favorit</h2>
+
 <div class="cards">
 
 <div class="card">
-<img src="WhatsApp Image 2026-04-29 at 23.25.27.jpeg">
+<img src="photo5.jpg">
 <div class="card-content">
 <h3>Risol Mayo</h3>
-<p class="price">Rp 5.000</p>
+<p class="price">Rp 5000</p>
 <input type="number" value="1" id="q1">
 <button class="btn" onclick="addToCart('Risol Mayo',5000,'q1')">+ Keranjang</button>
 </div>
 </div>
 
 <div class="card">
-<img src="WhatsApp Image 2026-04-29 at 23.25.26.jpeg">
+<img src="photo1.jpg">
 <div class="card-content">
-<h3>Risol Sayur</h3>
-<p class="price">Rp 4.000</p>
+<h3>Risol Coklat</h3>
+<p class="price">Rp 4000</p>
 <input type="number" value="1" id="q2">
-<button class="btn" onclick="addToCart('Risol Sayur',4000,'q2')">+ Keranjang</button>
+<button class="btn" onclick="addToCart('Risol Coklat',4000,'q2')">+ Keranjang</button>
 </div>
 </div>
 
 <div class="card">
-<img src="WhatsApp Image 2026-04-29 at 23.25.24.jpeg">
+<img src="photo4.jpg">
 <div class="card-content">
-<h3>Risol Coklat</h3>
-<p class="price">Rp 6.000</p>
+<h3>Risol Mayo</h3>
+<p class="price">Rp 6000</p>
 <input type="number" value="1" id="q3">
-<button class="btn" onclick="addToCart('Risol Coklat',6000,'q3')">+ Keranjang</button>
+<button class="btn" onclick="addToCart('Risol Mayo',6000,'q3')">+ Keranjang</button>
+</div>
+</div>
+
+<div class="card">
+<img src="photo3.jpg">
+<div class="card-content">
+<h3>Risol Matcha</h3>
+<p class="price">Rp 6000</p>
+<input type="number" value="1" id="q3">
+<button class="btn" onclick="addToCart('Risol Matcha',6000,'q3')">+ Keranjang</button>
+</div>
+</div>
+
+<div class="card">
+<img src="photo2.jpg">
+<div class="card-content">
+<h3>Risol Sayur</h3>
+<p class="price">Rp 6000</p>
+<input type="number" value="1" id="q3">
+<button class="btn" onclick="addToCart('Risol Sayur',6000,'q3')">+ Keranjang</button>
+</div>
+</div>
+
+<div class="card">
+<img src="photo6.jpg">
+<div class="card-content">
+<h3>Risol Ayam</h3>
+<p class="price">Rp 6000</p>
+<input type="number" value="1" id="q3">
+<button class="btn" onclick="addToCart('Risol Ayam',6000,'q3')">+ Keranjang</button>
 </div>
 </div>
 
 </div>
 </div>
 
+<!-- KONTAK -->
 <div class="section" id="kontak">
 <h2>Lokasi Kami</h2>
 <div id="map"></div>
 </div>
 
+<!-- CART -->
 <div class="cart-panel" id="cartPanel">
-  <div class="cart-header">
-    <h3>🛒 Keranjang</h3>
-    <span onclick="toggleCart()">✖</span>
-  </div>
-
-  <ul id="cartList" class="cart-list"></ul>
-
-  <div class="cart-footer">
-    <p>Total: <strong>Rp <span id="total">0</span></strong></p>
-    <button class="btn checkout" onclick="checkoutWA()">Checkout</button>
-  </div>
+<h3>Keranjang</h3>
+<ul id="cartList"></ul>
+<p>Total: Rp <span id="total">0</span></p>
+<button class="btn" onclick="checkoutWA()">Checkout WhatsApp</button>
 </div>
-
-<div class="cart-btn" onclick="toggleCart()">🛒</div>
 
 <div class="footer">
 <p>© 2026 Risol Rahma</p>
 </div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<script>
-// ================= CAROUSEL =================
-let slides = document.querySelectorAll('.slide');
-let index = 0;
-setInterval(() => {
-  slides[index].classList.remove('active');
-  index = (index + 1) % slides.length;
-  slides[index].classList.add('active');
-}, 3000);
 
-// ================= CART =================
+<script>
+// CAROUSEL
+let slides=document.querySelectorAll('.slide');
+let index=0;
+setInterval(()=>{
+slides[index].classList.remove('active');
+index=(index+1)%slides.length;
+slides[index].classList.add('active');
+},3000);
+
+// CART SYSTEM
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-function saveCart() {
-  localStorage.setItem("cart", JSON.stringify(cart));
+function addToCart(nama,harga,id){
+let qty=parseInt(document.getElementById(id).value);
+
+let existing = cart.find(item=>item.nama===nama);
+
+if(existing){
+existing.qty+=qty;
+}else{
+cart.push({nama,harga,qty});
 }
 
-function renderCart() {
-  let list = document.getElementById("cartList");
-  let totalEl = document.getElementById("total");
+localStorage.setItem("cart",JSON.stringify(cart));
 
-  list.innerHTML = "";
-  let total = 0;
-
-  cart.forEach((item, i) => {
-    let li = document.createElement("li");
-
-    li.innerHTML = `
-      <div>
-        <strong>${item.nama}</strong><br>
-        <small>${item.qty} x Rp ${item.harga}</small>
-      </div>
-      <button onclick="removeItem(${i})">✖</button>
-    `;
-
-    list.appendChild(li);
-    total += item.harga * item.qty;
-  });
-
-  totalEl.innerText = total.toLocaleString("id-ID");
+alert(nama+" ditambahkan!");
+updateCart();
 }
 
-function addToCart(nama, harga, id) {
-  let qty = parseInt(document.getElementById(id).value);
+function updateCart(){
+let list=document.getElementById("cartList");
+list.innerHTML="";
+let total=0;
+let totalItem=0;
 
-  // cek apakah sudah ada
-  let existing = cart.find(item => item.nama === nama);
+cart.forEach(item=>{
+let li=document.createElement("li");
+li.innerText=`${item.nama} x${item.qty}`;
+list.appendChild(li);
 
-  if (existing) {
-    existing.qty += qty;
-  } else {
-    cart.push({ nama, harga, qty });
-  }
+total+=item.harga*item.qty;
+totalItem+=item.qty;
+});
 
-  saveCart();
-  renderCart();
+document.getElementById("total").innerText=total;
+document.getElementById("cartCount").innerText=totalItem;
 }
 
-function removeItem(index) {
-  cart.splice(index, 1);
-  saveCart();
-  renderCart();
+function toggleCart(){
+document.getElementById("cartPanel").classList.toggle("active");
 }
 
-function toggleCart() {
-  document.getElementById('cartPanel').classList.toggle('active');
+function checkoutWA(){
+let text="Pesanan:%0A";
+
+cart.forEach(i=>{
+text+=`${i.nama} x${i.qty}%0A`;
+});
+
+let total=document.getElementById("total").innerText;
+text+=`Total: Rp ${total}`;
+
+window.open(`https://wa.me/6285255115592?text=${text}`);
 }
 
-function checkoutWA() {
-  let text = "Pesanan:%0A";
-  let total = 0;
+// LOAD AWAL
+updateCart();
 
-  cart.forEach(i => {
-    text += `${i.nama} x${i.qty}%0A`;
-    total += i.harga * i.qty;
-  });
-
-  text += `Total: Rp ${total}`;
-
-  window.open(`https://wa.me/6285825587404?text=${text}`);
-}
-
-// load saat pertama kali
-renderCart();
-
-// ================= MAP =================
-var map = L.map('map').setView([-3.4105,119.3432],15);
+// MAP
+var map=L.map('map').setView([-3.4105,119.3432],15);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-L.marker([-3.4105,119.3432]).addTo(map).bindPopup('Risol Rahma').openPopup();
+L.marker([-3.4105,119.3432]).addTo(map).bindPopup('Risol Rahma');
 </script>
 
 </body>
