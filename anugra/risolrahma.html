@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Risol Rahma</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:#fff7f0;color:#333}
+
+:root{
+--primary:#ff6b00;
+--secondary:#ff8c42;
+--accent:#ffd166;
+}
+
+.navbar{position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:15px 30px;background:linear-gradient(90deg,var(--primary),var(--secondary));color:white}
+.navbar a{color:white;margin-left:20px;text-decoration:none}
+
+/* HERO CAROUSEL */
+.hero{position:relative;height:70vh;overflow:hidden}
+.slide{position:absolute;width:100%;height:100%;background-size:cover;background-position:center;opacity:0;transition:1s}
+.slide.active{opacity:1}
+.hero-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:white;text-align:center;z-index:2}
+.hero-text h1{font-size:45px}
+
+.section{padding:60px 20px;text-align:center}
+.section h2{color:var(--primary);margin-bottom:20px}
+
+.cards{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.card{width:240px;background:white;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.1);overflow:hidden;transition:.3s}
+.card:hover{transform:translateY(-10px) scale(1.03)}
+.card img{width:100%;height:150px;object-fit:cover}
+.card-content{padding:15px}
+.price{color:var(--primary);font-weight:bold}
+
+.btn{background:var(--primary);color:white;border:none;padding:8px 15px;border-radius:20px;cursor:pointer;margin-top:8px}
+
+.cart-panel{position:fixed;right:0;top:0;width:320px;height:100%;background:white;box-shadow:-5px 0 20px rgba(0,0,0,0.2);padding:20px;transform:translateX(100%);transition:.4s}
+.cart-panel.active{transform:translateX(0)}
+
+.cart-btn{position:fixed;bottom:20px;right:20px;background:var(--primary);color:white;padding:18px;border-radius:50%;cursor:pointer}
+
+#map{height:300px;border-radius:12px;margin-top:20px}
+.footer{background:var(--primary);color:white;text-align:center;padding:20px}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+<h2>Risol Rahma</h2>
+<div>
+<a href="index.html">Home</a>
+<a href="#produk">Produk</a>
+<a href="#kontak">Kontak</a>
+</div>
+</div>
+
+<!-- HERO CAROUSEL -->
+<div class="hero">
+<div class="slide active" style="background-image:url('WhatsApp\ Image\ 2026-04-29\ at\ 23.25.24.jpeg')"></div>
+<div class="slide" style="background-image:url('WhatsApp\ Image\ 2026-04-29\ at\ 23.25.26.jpeg')"></div>
+<div class="slide" style="background-image:url('WhatsApp\ Image\ 2026-04-29\ at\ 23.25.27.jpeg')"></div>
+
+<div class="hero-text">
+<h1>Risol Lumer & Crispy 🔥</h1>
+<p>Enak, Murah, Bikin Nagih!</p>
+</div>
+</div>
+
+<div class="section" id="produk">
+<h2>Menu Favorit</h2>
+<div class="cards">
+
+<div class="card">
+<img src="WhatsApp Image 2026-04-29 at 23.25.27.jpeg">
+<div class="card-content">
+<h3>Risol Mayo</h3>
+<p class="price">Rp 5.000</p>
+<input type="number" value="1" id="q1">
+<button class="btn" onclick="addToCart('Risol Mayo',5000,'q1')">+ Keranjang</button>
+</div>
+</div>
+
+<div class="card">
+<img src="WhatsApp Image 2026-04-29 at 23.25.26.jpeg">
+<div class="card-content">
+<h3>Risol Sayur</h3>
+<p class="price">Rp 4.000</p>
+<input type="number" value="1" id="q2">
+<button class="btn" onclick="addToCart('Risol Sayur',4000,'q2')">+ Keranjang</button>
+</div>
+</div>
+
+<div class="card">
+<img src="WhatsApp Image 2026-04-29 at 23.25.24.jpeg">
+<div class="card-content">
+<h3>Risol Coklat</h3>
+<p class="price">Rp 6.000</p>
+<input type="number" value="1" id="q3">
+<button class="btn" onclick="addToCart('Risol Coklat',6000,'q3')">+ Keranjang</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="section" id="kontak">
+<h2>Lokasi Kami</h2>
+<div id="map"></div>
+</div>
+
+<div class="cart-panel" id="cartPanel">
+<h3>Keranjang</h3>
+<ul id="cartList"></ul>
+<p>Total: Rp <span id="total">0</span></p>
+<button class="btn" onclick="checkoutWA()">Checkout WhatsApp</button>
+</div>
+
+<div class="cart-btn" onclick="toggleCart()">🛒</div>
+
+<div class="footer">
+<p>© 2026 Risol Rahma</p>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+// CAROUSEL
+let slides=document.querySelectorAll('.slide');
+let index=0;
+setInterval(()=>{
+slides[index].classList.remove('active');
+index=(index+1)%slides.length;
+slides[index].classList.add('active');
+},3000);
+
+// CART
+let total=0;let cart=[];
+function addToCart(nama,harga,id){
+let qty=parseInt(document.getElementById(id).value);
+cart.push({nama,harga,qty});
+let li=document.createElement('li');
+li.innerText=`${nama} x${qty}`;
+document.getElementById('cartList').appendChild(li);
+total+=harga*qty;
+document.getElementById('total').innerText=total;
+}
+
+function toggleCart(){
+document.getElementById('cartPanel').classList.toggle('active');}
+
+function checkoutWA(){
+let text="Pesanan:%0A";
+cart.forEach(i=>{text+=`${i.nama} x${i.qty}%0A`});
+text+=`Total: Rp ${total}`;
+window.open(`https://wa.me/6281234567890?text=${text}`);
+}
+
+// MAP
+var map=L.map('map').setView([-3.4105,119.3432],15);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+L.marker([-3.4105,119.3432]).addTo(map).bindPopup('Risol Rahma').openPopup();
+</script>
+
+</body>
+</html>
