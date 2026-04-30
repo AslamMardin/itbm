@@ -45,6 +45,98 @@ body{background:#fff7f0;color:#333}
 
 #map{height:300px;border-radius:12px;margin-top:20px}
 .footer{background:var(--primary);color:white;text-align:center;padding:20px}
+
+/* ===== CART MODERN ===== */
+.cart-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 340px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: .4s ease;
+  z-index: 2000;
+}
+
+.cart-panel.active {
+  transform: translateX(0);
+}
+
+/* HEADER */
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: var(--primary);
+  color: white;
+  font-weight: bold;
+}
+
+.cart-header span {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* LIST */
+.cart-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  list-style: none;
+}
+
+.cart-list li {
+  background: #fff7f0;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.cart-list button {
+  background: crimson;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* FOOTER */
+.cart-footer {
+  padding: 15px;
+  border-top: 1px solid #eee;
+  background: #fff;
+}
+
+.cart-footer p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.checkout {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  border-radius: 10px;
+}
+
+/* SCROLLBAR NICE */
+.cart-list::-webkit-scrollbar {
+  width: 5px;
+}
+.cart-list::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
 </style>
 </head>
 
@@ -114,10 +206,17 @@ body{background:#fff7f0;color:#333}
 </div>
 
 <div class="cart-panel" id="cartPanel">
-<h3>Keranjang</h3>
-<ul id="cartList"></ul>
-<p>Total: Rp <span id="total">0</span></p>
-<button class="btn" onclick="checkoutWA()">Checkout WhatsApp</button>
+  <div class="cart-header">
+    <h3>🛒 Keranjang</h3>
+    <span onclick="toggleCart()">✖</span>
+  </div>
+
+  <ul id="cartList" class="cart-list"></ul>
+
+  <div class="cart-footer">
+    <p>Total: <strong>Rp <span id="total">0</span></strong></p>
+    <button class="btn checkout" onclick="checkoutWA()">Checkout</button>
+  </div>
 </div>
 
 <div class="cart-btn" onclick="toggleCart()">🛒</div>
@@ -153,16 +252,20 @@ function renderCart() {
 
   cart.forEach((item, i) => {
     let li = document.createElement("li");
-    li.innerHTML = `
-      ${item.nama} x${item.qty} 
-      <button onclick="removeItem(${i})">❌</button>
-    `;
-    list.appendChild(li);
 
+    li.innerHTML = `
+      <div>
+        <strong>${item.nama}</strong><br>
+        <small>${item.qty} x Rp ${item.harga}</small>
+      </div>
+      <button onclick="removeItem(${i})">✖</button>
+    `;
+
+    list.appendChild(li);
     total += item.harga * item.qty;
   });
 
-  totalEl.innerText = total;
+  totalEl.innerText = total.toLocaleString("id-ID");
 }
 
 function addToCart(nama, harga, id) {
